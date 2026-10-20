@@ -1,0 +1,1 @@
+# FSWD-Django-Oct-2026-pm
