@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balance Manager</title>
+    <style>
+      /* General Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        color: #333;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      .balance-container {
+        text-align: center;
+        background-color: #3498db;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 1.5em;
+        margin-top: 10px;
+      }
+      .input-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+      label {
+        font-size: 1.1em;
+        flex: 1;
+        color: #2c3e50;
+      }
+      input[type="number"] {
+        padding: 10px;
+        font-size: 1em;
+        width: 100px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        flex: 1;
+        margin-right: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        background-color: #27ae60;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2ecc71;
+      }
+
+      /* Statement Styling */
+      #statement {
+        margin-top: 30px;
+      }
+      #statement h3 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+      .transaction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .transaction-table th,
+      .transaction-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .transaction-table th {
+        background-color: #3498db;
+        color: white;
+        font-weight: normal;
+      }
+      .transaction-table tr:hover {
+        background-color: #f1f1f1;
+      }
+      .debit {
+        color: #e74c3c;
+      }
+      .credit {
+        color: #27ae60;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Balance Manager</h1>
+    <div class="balance-container">
+      Current Balance: $<span id="balance">1000</span>
+    </div>
+
+    <div class="input-group">
+      <label for="depositAmount">Deposit Amount:</label>
+      <input type="number" id="depositAmount" />
+      <button onclick="makeDeposit()">Deposit</button>
+    </div>
+
+    <div class="input-group">
+      <label for="withdrawAmount">Withdraw Amount:</label>
+      <input type="number" id="withdrawAmount" />
+      <button onclick="makeWithdrawal()">Withdraw</button>
+    </div>
+
+    <div id="statement">
+      <h3>Transaction Statement</h3>
+      <table class="transaction-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody id="transactions"></tbody>
+      </table>
+    </div>
+
+    <script>
+      let balance = 1000;
+      document.getElementById("balance").textContent = balance;
+
+      function makeDeposit() {
+        const amount = parseFloat(document.getElementById("depositAmount").value);
+        if (amount > 0) {
+          deposit(amount);
+          addTransaction("Credit", amount);
+        } else {
+          alert("Enter a valid deposit amount.");
+        }
+      }
+
+      function makeWithdrawal() {
+        const amount = parseFloat(document.getElementById("withdrawAmount").value);
+        if (amount > 0 && amount <= balance) {
+          withdraw(amount);
+          addTransaction("Debit", amount);
+        } else if (amount > balance) {
+          alert("Insufficient balance.");
+        } else {
+          alert("Enter a valid withdrawal amount.");
+        }
+      }
+
+      function withdraw(amount) {
+        balance -= amount;
+        updateBalanceDisplay();
+      }
+
+      function deposit(amount) {
+        balance += amount;
+        updateBalanceDisplay();
+      }
+
+      function updateBalanceDisplay() {
+        document.getElementById("balance").textContent = balance;
+      }
+
+      function addTransaction(type, amount) {
+        const transactionList = document.getElementById("transactions");
+        const transactionRow = document.createElement("tr");
+        const date = new Date().toLocaleString();
+
+        transactionRow.innerHTML = `
+          <td>${date}</td>
+          <td>${type === "Credit" ? "Deposit" : "Withdrawal"}</td>
+          <td class="${type.toLowerCase()}">$${amount}</td>
+          <td>$${balance}</td>
+        `;
+        transactionList.appendChild(transactionRow);
+      }
+    </script>
+  </body>
+</html>

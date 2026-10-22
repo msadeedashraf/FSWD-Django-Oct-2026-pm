@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balance Manager</title>
+    <style>
+      /* General Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        color: #333;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      .balance-container {
+        text-align: center;
+        background-color: #3498db;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 1.5em;
+        margin-top: 10px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+      }
+      label {
+        font-size: 1.1em;
+        margin-bottom: 5px;
+        color: #2c3e50;
+      }
+      input[type="number"],
+      select,
+      input[type="text"] {
+        padding: 10px;
+        font-size: 1em;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        background-color: #27ae60;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2ecc71;
+      }
+      #statement {
+        margin-top: 30px;
+      }
+      #statement h3 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+      .transaction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .transaction-table th,
+      .transaction-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .transaction-table th {
+        background-color: #3498db;
+        color: white;
+      }
+      .transaction-table tr:hover {
+        background-color: #f1f1f1;
+      }
+      .debit {
+        color: #e74c3c;
+      }
+      .credit {
+        color: #27ae60;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Balance Manager</h1>
+    <div class="balance-container">
+      Current Balance: $<span id="balance">1000</span>
+    </div>
+
+    <div class="input-group">
+      <label for="transactionType">Transaction Type</label>
+      <select id="transactionType" onchange="toggleTransactionFields()">
+        <option value="Deposit">Deposit</option>
+        <option value="Withdraw">Withdraw</option>
+      </select>
+
+      <label for="transactionDescription">Description</label>
+      <select id="transactionDescription" onchange="toggleCustomDescription()">
+        <option value="Salary">Salary</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input
+        type="text"
+        id="customDescription"
+        class="hidden"
+        placeholder="Enter custom description"
+      />
+
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" />
+
+      <button onclick="makeTransaction()">Submit</button>
+    </div>
+
+    <!-- File Upload for CSV -->
+    <div class="input-group">
+      <label for="csvFile">Upload CSV File (Date, Description, Type, Amount)</label>
+      <input type="file" id="csvFile" accept=".csv" onchange="handleFileUpload(event)" />
+    </div>
+
+    <div id="statement">
+      <h3>Transaction Statement</h3>
+      <table class="transaction-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody id="transactions"></tbody>
+      </table>
+    </div>
+
+    <script>
+      // Initialize balance and load data from local storage if available
+      let balance = parseFloat(localStorage.getItem("balance")) || 1000;
+      document.getElementById("balance").textContent = balance;
+      loadTransactionsFromLocalStorage();
+
+      function toggleTransactionFields() {
+        const type = document.getElementById("transactionType").value;
+        document.getElementById("amount").placeholder =
+          type === "Deposit" ? "Enter deposit amount" : "Enter withdrawal amount";
+      }
+
+      function toggleCustomDescription() {
+        const description = document.getElementById("transactionDescription").value;
+        const customDescriptionField = document.getElementById("customDescription");
+        customDescriptionField.classList.toggle("hidden", description !== "Other");
+      }
+
+      function makeTransaction() {
+        const type = document.getElementById("transactionType").value;
+        const amount = parseFloat(document.getElementById("amount").value);
+        const description =
+          document.getElementById("transactionDescription").value === "Other"
+            ? document.getElementById("customDescription").value
+            : document.getElementById("transactionDescription").value;
+
+        if (!amount || amount <= 0) {
+          alert("Please enter a valid amount.");
+          return;
+        }
+        if (type === "Withdraw" && amount > balance) {
+          alert("Insufficient balance.");
+          return;
+        }
+        if (type === "Withdraw") {
+          withdraw(amount);
+        } else {
+          deposit(amount);
+        }
+        addTransaction(type, description, amount);
+        saveToLocalStorage();
+      }
+
+      function withdraw(amount) {
+        balance -= amount;
+        updateBalanceDisplay();
+      }
+
+      function deposit(amount) {
+        balance += amount;
+        updateBalanceDisplay();
+      }
+
+      function updateBalanceDisplay() {
+        document.getElementById("balance").textContent = balance;
+      }
+
+      function addTransaction(type, description, amount) {
+        const transactionList = document.getElementById("transactions");
+        const transactionRow = document.createElement("tr");
+        const date = new Date().toLocaleString();
+        const amountClass = type === "Deposit" ? "credit" : "debit";
+
+        transactionRow.innerHTML = `
+          <td>${date}</td>
+          <td>${description}</td>
+          <td class="${amountClass}">$${amount}</td>
+          <td>$${balance}</td>
+        `;
+        transactionList.appendChild(transactionRow);
+      }
+
+      // Function to handle CSV file upload
+      function handleFileUpload(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const rows = e.target.result.split("\n");
+          rows.forEach((row) => {
+            const [date, description, type, amount] = row.split(",");
+            const amountNum = parseFloat(amount);
+
+            if (type.trim() === "Debit" && amountNum <= balance) {
+              withdraw(amountNum);
+              addTransaction("Debit", description.trim(), amountNum);
+            } else if (type.trim() === "Credit") {
+              deposit(amountNum);
+              addTransaction("Credit", description.trim(), amountNum);
+            }
+          });
+          saveToLocalStorage();
+        };
+
+        reader.readAsText(file);
+      }
+
+      // Save data to local storage
+      function saveToLocalStorage() {
+        localStorage.setItem("balance", balance);
+        localStorage.setItem("transactions", document.getElementById("transactions").innerHTML);
+      }
+
+      // Load transactions from local storage on page load
+      function loadTransactionsFromLocalStorage() {
+        const storedTransactions = localStorage.getItem("transactions");
+        if (storedTransactions) {
+          document.getElementById("transactions").innerHTML = storedTransactions;
+        }
+      }
+    </script>
+  </body>
+</html>

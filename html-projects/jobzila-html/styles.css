@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header CSS Starts*/
+header{
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    
+}
+nav
+{
+    background-color: #ff8500;
+    padding: 10px;
+
+}
+
+nav ul {
+     list-style-type: none;
+}
+nav ul li
+{
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li a{
+
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    color: #f8e1cc;
+}
+
+/* Header CSS Ends*/
+
+
+/*Footer Page CSS Begin*/
+
+footer{
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+footer p a {
+
+    color: white;
+    text-decoration: none;
+    color: #f7c784;
+}
+
+footer p a:hover
+{
+
+    color: #f28d21;
+}
+
+/*Footer Page CSS Ends*/
+
+
+/*Index Page CSS Begin*/
+
+.hero{
+background-image: url(images/mainPic.jpg);
+height: 500px;
+background-size: cover;
+justify-content: center;
+align-items: center;
+display: flex;
+}
+
+.hero-section{
+    text-align: center;
+    
+}
+.hero-section h2{
+    color: #56a8f0;
+
+}
+
+.hero-section p{
+    margin-top: 30px;
+    color: rgb(239, 231, 181);
+}
+
+/*Index Page CSS Ends*/
+
+
+/*Privacy Page CSS Begin*/
+.privacy-section{
+
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom: 30px;
+}
+
+.privacy-section h2{
+
+margin-bottom: 10px;
+
+}
+
+.privacy{
+    margin-bottom: 20px;
+border: 1px solid #ccc ;
+border-radius: 5px;
+padding: 20px;
+}
+
+/*Privacy Page CSS Ends*/
+
+
+
+/*Privacy Page CSS Begin*/
+.terms-section{
+
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom: 30px;
+}
+
+.terms-section h2{
+
+margin-bottom: 10px;
+
+}
+
+.terms{
+    margin-bottom: 20px;
+border: 1px solid #ccc ;
+border-radius: 5px;
+padding: 20px;
+}
+
+/*Privacy Page CSS Ends*/
+
+
+/*Job Listing Us Page CSS Start*/
+.jobs-listing-section{
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom: 30px;
+
+}
+
+.jobs-listing-section h2 {
+    margin-bottom: 10px;
+
+}
+
+.jobs-listing
+{
+ margin-bottom: 20px;
+border: 1px solid #ccc ;
+border-radius: 5px;
+padding: 20px;
+}
+
+
+/*Job Listing Us Page CSS Ends*/
+
+
+/*Contact Us Page CSS Starts*/
+
+.contact-section
+{
+    margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom: 30px;
+
+
+}
+.contact-section h2{
+    margin-bottom: 10px;
+}
+
+.contact {
+
+ margin-bottom: 20px;
+border: 1px solid #ccc ;
+border-radius: 5px;
+padding: 20px;
+}
+
+.contact-form{
+    padding: 20px;
+
+
+}
+.contact-form input , textarea, select{
+
+width: 100%;
+margin-bottom: 10px;
+padding: 5px;
+border: 1px solid #ccc   ;
+border-radius: 3px;
+}
+
+
+.contact-form input[type=submit]{
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    margin-top: 50px;
+    border: none;
+}
+
+/*Contact Us Page CSS Ends*/

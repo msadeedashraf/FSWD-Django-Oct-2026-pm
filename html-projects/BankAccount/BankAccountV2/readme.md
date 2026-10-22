@@ -1,0 +1,1 @@
+This is the code we did in the class. YOu can use this as baseline code to implement the File Upload feature and local storage.

@@ -1,0 +1,394 @@
+/* Base Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #EAF6FF;
+    color: #2A2A72;
+}
+
+header, footer {
+    background-color: #232528;
+    color: white;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #009FFD;
+}
+
+footer p {
+    text-align: center;
+    margin: 0;
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #009FFD;
+    border-bottom: 2px solid #FFA400;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+button, input[type="submit"], .btn {
+    background-color: #FFA400;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover, .btn:hover {
+    background-color: #009FFD;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #009FFD;
+    border-radius: 5px;
+}
+
+input[type="date"], input[type="number"] {
+    max-width: 200px;
+}
+
+/* Specific Section Styles */
+#search-bar form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+#search-bar input[type="text"], #search-bar input[type="date"], #search-bar input[type="number"] {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+#property-listings .property-card {
+    border: 1px solid #009FFD;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+#map-view {
+    background-color: #009FFD;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #search-bar form {
+        flex-direction: column;
+    }
+
+    input[type="date"], input[type="number"] {
+        max-width: 100%;
+    }
+}
+
+/* Navbar Styling */
+.navbar-dark .navbar-nav .nav-link {
+    color: #EAF6FF; /* Light blue text color for links */
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    background-color: #009FFD; /* Dark blue background on hover */
+}
+
+.navbar-brand {
+    color: #FFA400; /* Orange color for brand name */
+    font-weight: bold;
+}
+
+.navbar-brand:hover {
+    color: #EAF6FF; /* Light blue on hover */
+}
+
+.navbar-toggler {
+    border-color: #FFA400; /* Orange border for the hamburger icon */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23FFA400' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Orange hamburger icon */
+}
+
+footer {
+    background-color: #232528;
+    color: #EAF6FF;
+}
+
+footer h5 {
+    color: #FFA400;
+    margin-bottom: 20px;
+}
+
+footer a {
+    color: #EAF6FF;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #009FFD;
+}
+
+footer .list-inline-item {
+    margin-right: 15px;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #EAF6FF;
+}
+
+h2 {
+    color: #009FFD;
+    margin-bottom: 20px;
+}
+
+footer h5 {
+    color: #FFA400;
+}
+
+footer a {
+    color: #EAF6FF;
+    transition: color 0.3s ease;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #EAF6FF;
+}
+
+main {
+    padding: 20px;
+    min-height: calc(100vh - 60px);
+}
+
+footer {
+    background-color: #232528;
+}
+
+.card {
+    border: 1px solid #009FFD;
+    background-color: #FFFFFF;
+}
+
+h2 {
+    color: #009FFD;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #009FFD;
+    margin-bottom: 20px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.card-title {
+    color: #2A2A72;
+}
+
+.card-subtitle {
+    color: #009FFD;
+}
+
+.card-text {
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin: 5px;
+}
+h2 {
+    color: #009FFD;
+    margin-bottom: 20px;
+}
+
+table {
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 0.9rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+h2 {
+    color: #009FFD;
+    margin-bottom: 20px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.card-title {
+    color: #2A2A72;
+}
+
+.card-subtitle {
+    color: #009FFD;
+}
+
+.form-label {
+    color: #2A2A72;
+}
+
+.btn {
+    margin: 5px;
+}
+body {
+    background-color: #EAF6FF;
+}
+
+header {
+    background-color: #2A2A72;
+}
+
+h1, h2 {
+    color: #009FFD;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    background-color: #FFFFFF;
+}
+
+.card-title {
+    color: #232528;
+}
+
+.btn-primary {
+    background-color: #FFA400;
+    border-color: #FFA400;
+}
+
+.btn-primary:hover {
+    background-color: #ff8c00;
+    border-color: #ff8c00;
+}
+
+.btn-success {
+    background-color: #009FFD;
+    border-color: #009FFD;
+}
+
+.btn-success:hover {
+    background-color: #007bb5;
+    border-color: #007bb5;
+}
+
+footer {
+    background-color: #2A2A72;
+}
+
+footer h5 {
+    color: #FFA400;
+}
+
+footer a {
+    color: #EAF6FF;
+}
+
+footer a:hover {
+    color: #FFA400;
+}
+#search-property {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#search-property .form-label {
+    color: #232528;
+}
+
+#search-property .form-control,
+#search-property .form-select {
+    border-radius: 8px;
+    border: 1px solid #D1D1D1;
+}
+
+#search-property .btn-primary {
+    background-color: #FFA400;
+    border-color: #FFA400;
+}
+
+#search-property .btn-primary:hover {
+    background-color: #ff8c00;
+    border-color: #ff8c00;
+}

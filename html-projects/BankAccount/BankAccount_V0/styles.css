@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: auto;
+  }
+  .balance {
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
+  .input-group {
+    margin-top: 20px;
+  }
+  #statement {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }

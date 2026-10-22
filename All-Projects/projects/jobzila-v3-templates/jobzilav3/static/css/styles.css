@@ -1,0 +1,442 @@
+/* =========================
+   Global Reset
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+html,
+body {
+    min-height: 100%;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+/* This pushes the footer to the bottom */
+main {
+    flex: 1;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+header {
+    background-color: #333;
+    color: white;
+}
+
+
+header h1 {
+    padding: 20px;
+}
+
+
+/* =========================
+   Navigation
+========================= */
+
+/* Navigation */
+
+.navbar {
+    position: relative;
+    width: 100%;
+    background-color: #ff8500;
+    padding: 10px 20px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 6px 0;
+}
+
+.nav-menu a:hover {
+    color: #f8e1cc;
+}
+
+.menu-toggle {
+    display: none;
+
+    background: transparent;
+    color: white;
+
+    border: 2px solid white;
+    border-radius: 4px;
+
+    padding: 5px 10px;
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+/* 
+nav {
+    width: 100%;
+    background-color: #ff8500;
+    padding: 10px 20px;
+}
+
+
+nav ul {
+    list-style-type: none;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+
+nav ul li {
+    display: block;
+}
+
+
+nav ul li a {
+    display: block;
+
+    color: white;
+    text-decoration: none;
+
+    padding: 5px 0;
+}
+
+
+nav ul li a:hover {
+    color: #f8e1cc;
+} */
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    width: 100%;
+
+    background-color: #333;
+    color: white;
+
+    padding: 20px;
+    text-align: center;
+}
+
+
+footer a {
+    color: #f7c784;
+    text-decoration: none;
+}
+
+
+footer a:hover {
+    color: #f28d21;
+}
+
+
+/* =========================
+   Home Page
+========================= */
+
+main {
+    flex: 1;
+    display: flex;
+}
+
+.hero {
+    flex: 1;
+    min-height: 500px;
+    width: 100%;
+
+    background-image: url("../images/mainPic.jpg");
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* .hero {
+    min-height: 500px;
+
+    background-image: url("../images/mainPic.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+} */
+
+
+.hero-section {
+    max-width: 800px;
+
+    padding: 30px;
+    border-radius: 8px;
+
+    text-align: center;
+
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+
+.hero-section h2 {
+    color: #56a8f0;
+    font-size: 36px;
+}
+
+
+.hero-section p {
+    margin-top: 30px;
+    color: rgb(239, 231, 181);
+}
+
+
+/* =========================
+   Privacy Page
+========================= */
+
+.privacy-section {
+    margin: 20px 20px 30px;
+}
+
+
+.privacy-section h2 {
+    margin-bottom: 10px;
+}
+
+
+.privacy {
+    margin-bottom: 20px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   Terms Page
+========================= */
+
+.terms-section {
+    margin: 20px 20px 30px;
+}
+
+
+.terms-section h2 {
+    margin-bottom: 10px;
+}
+
+
+.terms {
+    margin-bottom: 20px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   Job Listing Page
+========================= */
+
+.jobs-listing-section {
+    margin: 20px 20px 30px;
+}
+
+
+.jobs-listing-section h2 {
+    margin-bottom: 10px;
+}
+
+
+.jobs-listing {
+    margin-bottom: 20px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   Contact Page
+========================= */
+
+.contact-section {
+    margin: 20px 20px 30px;
+}
+
+
+.contact-section h2 {
+    margin-bottom: 10px;
+}
+
+
+.contact {
+    margin-bottom: 20px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    padding: 20px;
+}
+
+
+.contact-form {
+    padding: 20px;
+}
+
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+
+    margin-bottom: 10px;
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    font-family: inherit;
+    font-size: 16px;
+}
+
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+.contact-form input[type="submit"] {
+    width: auto;
+
+    background-color: #333;
+    color: white;
+
+    padding: 10px 15px;
+    margin-top: 10px;
+
+    border: none;
+    cursor: pointer;
+}
+
+
+.contact-form input[type="submit"]:hover {
+    background-color: #ff8500;
+}
+
+
+/* =========================
+   Responsive Navigation
+========================= */
+
+@media screen and (max-width: 700px) {
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+
+    .hero {
+        min-height: 400px;
+    }
+
+
+    .hero-section h2 {
+        font-size: 28px;
+    }
+}
+
+
+
+@media screen and (max-width: 700px) {
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .nav-menu a {
+        width: 100%;
+        padding: 12px 5px;
+    }
+}

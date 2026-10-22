@@ -1,0 +1,86 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+{{ blog.title }} | JobZila
+{% endblock title %}
+
+{% block main %}
+
+<section class="jobs-listing-section">
+
+```
+<article class="jobs-listing job-detail-card">
+
+    <h2>{{ blog.title }}</h2>
+
+    <p>
+        <strong>Author:</strong>
+        {{ blog.author }}
+    </p>
+
+    <p>
+        <strong>Published:</strong>
+        {{ blog.date|date:"M d, Y" }}
+    </p>
+
+    {% if blog.banner %}
+        <img
+            src="{{ blog.banner.url }}"
+            alt="{{ blog.title }}"
+            class="blog-banner"
+        />
+    {% endif %}
+
+    <div class="job-detail-description">
+
+        <h3>Blog Content</h3>
+
+        <div>
+            {{ blog.body|linebreaks }}
+        </div>
+
+    </div>
+
+    {% if blog.link %}
+        <a
+            href="{{ blog.link }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="view-job-link"
+        >
+            Visit Related Resource
+        </a>
+    {% endif %}
+
+    {% if user == blog.author %}
+        <div class="job-management-actions">
+
+            <a
+                href="{% url 'blogs:edit_blog' blog.id %}"
+                class="edit-job-link"
+            >
+                Edit Blog
+            </a>
+
+            <a
+                href="{% url 'blogs:delete_blog' blog.id %}"
+                class="delete-job-link"
+            >
+                Delete Blog
+            </a>
+
+        </div>
+    {% endif %}
+
+    <p class="back-to-jobs">
+        <a href="{% url 'blogs:blog' %}">
+            Back to Blogs
+        </a>
+    </p>
+
+</article>
+```
+
+</section>
+
+{% endblock main %}

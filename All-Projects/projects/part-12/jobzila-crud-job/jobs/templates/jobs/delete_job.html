@@ -1,0 +1,51 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+Delete {{ job.title }} | JobZila
+{% endblock title %}
+
+{% block main %}
+<section class="job-form-section">
+
+    <div class="job-form-card delete-job-card">
+
+        <h2>Delete Job</h2>
+
+        <p class="delete-warning">
+            Are you sure you want to permanently delete this job?
+        </p>
+
+        <div class="delete-job-information">
+            <h3>{{ job.title }}</h3>
+
+            <p>
+                <strong>Company:</strong>
+                {{ job.company }}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                {{ job.location }}
+            </p>
+        </div>
+
+        <p>
+            This action cannot be undone.
+        </p>
+
+        <form method="POST" class="delete-job-form">
+            {% csrf_token %}
+
+            <button type="submit" class="delete-job-button">
+                Yes, Delete Job
+            </button>
+
+            <a href="{% url 'jobs:job_detail' job.id %}">
+                Cancel
+            </a>
+        </form>
+
+    </div>
+
+</section>
+{% endblock main %}

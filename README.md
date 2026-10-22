@@ -6,7 +6,7 @@
 
 [Django](https://docs.djangoproject.com/en/6.0/)
 
-## Getting Started 
+## Getting Started
 
 [Getting Started](https://docs.djangoproject.com/en/6.0/intro/)
 
@@ -14,6 +14,10 @@
 ### Django - W3School
 
 [DJANGO](https://www.w3schools.com/django/django_install_django.php)
+
+
+### Setting up the environment
+[Flask Hello World](https://github.com/msadeedashraf/FSWD-FLASK-JUNE-2026-AM/blob/main/README.md)
 
 
 ### Model field reference

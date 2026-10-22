@@ -1,0 +1,70 @@
+# ==========================================
+# Django Project - .gitignore
+# ==========================================
+
+# 1. Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# 2. Python Cache and Compiled Files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# 3. Environment Variables and Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+
+# 4. Local SQLite Database
+db.sqlite3
+db.sqlite3-journal
+*.sqlite3-journal
+
+# 5. Django Logs and Runtime Files
+*.log
+*.pid
+
+# 6. Uploaded Media Files
+media/
+
+# 7. Collected Static Files
+staticfiles/
+
+# 8. IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 9. Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 10. Testing and Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# 11. Build and Distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# 12. Temporary and Backup Files
+*.tmp
+*.bak
+*.backup
+*~

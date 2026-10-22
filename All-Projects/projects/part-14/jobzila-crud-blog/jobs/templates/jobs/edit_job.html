@@ -1,0 +1,38 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+Edit {{ job.title }} | JobZila
+{% endblock title %}
+
+{% block main %}
+<section class="job-form-section">
+
+    <div class="job-form-card">
+
+        <h2>Edit Job</h2>
+
+        <p class="job-form-intro">
+            Update the information for
+            <strong>{{ job.title }}</strong>.
+        </p>
+
+        <form method="POST" class="job-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="job-form-buttons">
+                <button type="submit">
+                    Update Job
+                </button>
+
+                <a href="{% url 'jobs:job_detail' job.id %}">
+                    Cancel
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+{% endblock main %}

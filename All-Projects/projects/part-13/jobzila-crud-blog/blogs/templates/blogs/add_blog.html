@@ -1,0 +1,41 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+Add Blog | JobZila
+{% endblock title %}
+
+{% block main %}
+<section class="job-form-section">
+
+    <div class="job-form-card">
+
+        <h2>Add New Blog</h2>
+
+        <p class="job-form-intro">
+            Complete the form below to publish a new blog post.
+        </p>
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+            class="job-form"
+        >
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="job-form-buttons">
+                <button type="submit">
+                    Save Blog
+                </button>
+
+                <a href="{% url 'blogs:blog' %}">
+                    Cancel
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+{% endblock main %}

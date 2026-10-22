@@ -1,0 +1,109 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+    Blogs
+{% endblock title %}
+
+{% block main %}
+
+<section class="blogs-section">
+
+    <div class="blogs-header">
+        <h2>Latest Blogs</h2>
+        <p>Articles, career advice, and useful resources for job seekers.</p>
+    </div>
+
+
+       <!-- Quick title search -->
+    <div class="job-search-box">
+        <form
+            method="GET"
+            action="{% url 'blogs:blog' %}"
+            class="quick-search-form"
+        >
+            <label for="quick-search">Search by blog title</label>
+
+            <div class="quick-search-row">
+                <input
+                    type="search"
+                    id="quick-search"
+                    name="q"
+                    value="{{ quick_search }}"
+                    placeholder="For example: Python Developer"
+                />
+
+                <button type="submit">
+                    Search
+                </button>
+            </div>
+        </form>
+
+        <button
+            type="button"
+            id="advanced-search-toggle"
+            class="advanced-search-toggle"
+            aria-expanded="{% if advanced_search_active %}true{% else %}false{% endif %}"
+            aria-controls="advanced-search"
+        >
+            Advanced Search
+        </button>
+    </div>
+
+
+    <div class="blogs-list">
+
+        {% for b in blogs %}
+
+            <article class="blog-card">
+
+                <div class="blog-card-top">
+
+                    <div>
+                        <h3>
+                              <a href="{% url 'blogs:blog_detail' b.id %}">
+                                {{ b.title }}
+                            </a>
+                        </h3>
+
+                        <p class="blog-author">
+                            By <strong>{{ b.author }}</strong>
+                        </p>
+                    </div>
+
+                    <p class="blog-date">
+                        {{ b.date|date:"M d, Y" }}
+                    </p>
+
+                </div>
+
+                {% if b.banner %}
+                    <img
+                        class="blog-banner"
+                        src="{{ b.banner.url }}"
+                        alt="{{ b.title }}"
+                    />
+                {% endif %}
+
+                <p class="blog-description">
+                    {{ b.body|truncatewords:35 }}
+                </p>
+
+                <a class="read-blog-link" href="{% url 'blogs:blog_detail' b.id %}">                    Read More
+                </a>
+
+            </article>
+
+        {% empty %}
+
+            <div class="no-blog-results">
+                <h3>No blogs available</h3>
+                <p>New blog posts will appear here.</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock main %}

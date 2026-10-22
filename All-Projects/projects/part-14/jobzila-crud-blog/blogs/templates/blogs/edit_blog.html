@@ -1,0 +1,56 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+Edit {{ blog.title }} | JobZila
+{% endblock title %}
+
+{% block main %}
+<section class="job-form-section">
+
+    <div class="job-form-card">
+
+        <h2>Edit Blog</h2>
+
+        <p class="job-form-intro">
+            Update the information for
+            <strong>{{ blog.title }}</strong>.
+        </p>
+
+        {% if blog.banner %}
+            <div class="current-blog-banner">
+                <p><strong>Current Banner:</strong></p>
+
+                <img
+                    src="{{ blog.banner.url }}"
+                    alt="{{ blog.title }}"
+                    class="blog-banner"
+                />
+            </div>
+        {% endif %}
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+            class="job-form"
+        >
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {{ form.as_p }}
+
+            <div class="job-form-buttons">
+                <button type="submit">
+                    Update Blog
+                </button>
+
+                <a href="{% url 'blogs:blog_detail' blog.id %}">
+                    Cancel
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+{% endblock main %}

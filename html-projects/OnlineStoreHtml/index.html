@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Tech Store Skeleton</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Utility Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo">mini<span>store</span></div>
+      <div class="location">Deliver to Hamilton</div>
+    </div>
+
+    <div class="search-area">
+      <select class="search-category">
+        <option>All</option>
+        <option>Audio</option>
+        <option>Accessories</option>
+        <option>Displays</option>
+        <option>Cameras</option>
+      </select>
+      <input type="text" placeholder="Search Mini Tech Store" />
+      <button class="search-btn">Search</button>
+    </div>
+
+    <div class="topbar-right">
+      <div class="nav-box">
+        <small>Hello, Sign in</small>
+        <strong>Account</strong>
+      </div>
+      <div class="nav-box">
+        <small>Returns</small>
+        <strong>& Orders</strong>
+      </div>
+      <div class="cart-box">
+        🛒 <strong>Cart</strong>
+      </div>
+    </div>
+  </header>
+
+  <!-- Secondary Nav -->
+  <nav class="subnav">
+    <a href="#">All</a>
+    <a href="#">Today's Deals</a>
+    <a href="#">Audio</a>
+    <a href="#">Accessories</a>
+    <a href="#">Monitors</a>
+    <a href="#">Cameras</a>
+    <a href="#">Best Sellers</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Tech Essentials for Everyday Use</h1>
+      <p>Browse featured products, compare prices, and build your order.</p>
+    </div>
+  </section>
+
+  <!-- Main Layout -->
+  <main class="page-content">
+    <!-- Left/Main Products -->
+    <section class="products-section">
+      <div class="section-title-row">
+        <h2>Featured Products</h2>
+        <p>Hardcoded skeleton for HTML/CSS teaching</p>
+      </div>
+
+      <div class="products-grid">
+        <article class="product-card">
+          <div class="product-image">Image</div>
+          <h3>Wireless Headphones</h3>
+          <p class="product-category">Category: Audio</p>
+          <p class="product-rating">★★★★☆</p>
+          <p class="product-price">$99.00</p>
+          <p class="product-stock">In Stock</p>
+          <button class="cart-btn">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">Image</div>
+          <h3>Mechanical Keyboard</h3>
+          <p class="product-category">Category: Accessories</p>
+          <p class="product-rating">★★★★★</p>
+          <p class="product-price">$75.00</p>
+          <p class="product-stock">In Stock</p>
+          <button class="cart-btn">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">Image</div>
+          <h3>Gaming Mouse</h3>
+          <p class="product-category">Category: Accessories</p>
+          <p class="product-rating">★★★★☆</p>
+          <p class="product-price">$40.00</p>
+          <p class="product-stock">In Stock</p>
+          <button class="cart-btn">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">Image</div>
+          <h3>24" Monitor</h3>
+          <p class="product-category">Category: Displays</p>
+          <p class="product-rating">★★★★☆</p>
+          <p class="product-price">$220.00</p>
+          <p class="product-stock">Limited Stock</p>
+          <button class="cart-btn">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">Image</div>
+          <h3>HD Webcam</h3>
+          <p class="product-category">Category: Cameras</p>
+          <p class="product-rating">★★★★☆</p>
+          <p class="product-price">$60.00</p>
+          <p class="product-stock">In Stock</p>
+          <button class="cart-btn">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">Image</div>
+          <h3>Bluetooth Speaker</h3>
+          <p class="product-category">Category: Audio</p>
+          <p class="product-rating">★★★★☆</p>
+          <p class="product-price">$120.00</p>
+          <p class="product-stock">Only 2 Left</p>
+          <button class="cart-btn">Add to Cart</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Right/Order Summary -->
+    <aside class="summary-section">
+      <div class="summary-card">
+        <h2>Order Summary</h2>
+        <p><strong>Items:</strong> 3</p>
+        <p><strong>Total:</strong> $214.00</p>
+        <button class="buy-btn">Proceed to Checkout</button>
+        <button class="clear-btn">Clear Cart</button>
+      </div>
+
+      <div class="cart-preview">
+        <h3>Your Cart</h3>
+
+        <div class="cart-item">
+          <div>
+            <strong>Wireless Headphones</strong>
+            <p>$99.00 x 1</p>
+          </div>
+          <span>$99.00</span>
+        </div>
+
+        <div class="cart-item">
+          <div>
+            <strong>Gaming Mouse</strong>
+            <p>$40.00 x 2</p>
+          </div>
+          <span>$80.00</span>
+        </div>
+
+        <div class="cart-item">
+          <div>
+            <strong>HD Webcam</strong>
+            <p>$60.00 x 1</p>
+          </div>
+          <span>$60.00</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-backtop">
+      <a href="#">Back to top</a>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-column">
+        <h4>Get to Know Us</h4>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">Store Info</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Shop With Us</h4>
+        <a href="#">Audio</a>
+        <a href="#">Accessories</a>
+        <a href="#">Displays</a>
+        <a href="#">Cameras</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Support</h4>
+        <a href="#">Your Account</a>
+        <a href="#">Orders</a>
+        <a href="#">Returns</a>
+        <a href="#">Help Center</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Teaching Demo</h4>
+        <p>This footer is part of the HTML/CSS-only storefront skeleton version.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mini Tech Store. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

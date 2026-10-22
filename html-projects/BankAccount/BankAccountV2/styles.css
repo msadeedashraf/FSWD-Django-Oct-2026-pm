@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+.balance-container {
+  text-align: center;
+  background-color: #3498db;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+label {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+input[type="number"],
+      select,
+      input[type="text"] {
+        padding: 10px;
+        font-size: 1em;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        background-color: #27ae60;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #2ecc71;
+      }
+
+      #statement {
+        margin-top: 30px;
+      }
+
+      #statement h3 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        
+      }
+      
+      .transaction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      
+      .transaction-table th,
+      .transaction-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+     
+      .transaction-table th {
+        background-color: #3498db;
+        color: white;
+        
+      }
+
+      .transaction-table tr:hover {
+        background-color: #f1f1f1;
+      }
+
+
+      .debit{
+        color:red
+      }
+
+      .credit{
+        color: green;
+      }
+
+      .hidden{
+        display: none;
+      }  
+
+      
