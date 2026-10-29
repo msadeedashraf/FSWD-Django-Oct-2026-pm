@@ -807,7 +807,8 @@ Find Jobs | JobZila
         flex-direction: column;
         gap: 4px;
     }
-}```
+}
+```
 
 **Checkpoint:** the search form and result cards have their own layout, and the existing header, footer and mobile menu still look correct.
 
