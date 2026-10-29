@@ -873,6 +873,9 @@ http://127.0.0.1:8000/jobs/?location=Toronto
 http://127.0.0.1:8000/jobs/?keyword=remote&sort=title
 http://127.0.0.1:8000/jobs/?company=Microsoft&sort=oldest
 ```
+## To reload the updated CSS press
+
+- Save and refresh with Ctrl + Shift + R.
 
 - [ ] Default shows all jobs, newest first.
 - [ ] Quick search searches titles only.
