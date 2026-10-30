@@ -1,6 +1,7 @@
 ## Starting code is jobzilav3_job_search
 
-[starter code](/django-jobzila-projects/04-jobzila-search)
+
+[starter code](/django-jobzila-projects/04-jobzila-search/jobzilav3/)
 
 
 
