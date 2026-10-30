@@ -1,0 +1,258 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+Find Jobs | JobZila
+{% endblock title %}
+
+{% block main %}
+<section class="jobs-search-section">
+
+    <div class="jobs-search-header">
+        <h2>Find Jobs</h2>
+        <p>
+            Search available jobs by title or use advanced search
+            to filter by multiple criteria.
+        </p>
+    </div>
+
+    <!-- Quick title search -->
+    <div class="job-search-box">
+        <form
+            method="GET"
+            action="{% url 'jobs:job_list' %}"
+            class="quick-search-form"
+        >
+            <label for="quick-search">Search by job title</label>
+
+            <div class="quick-search-row">
+                <input
+                    type="search"
+                    id="quick-search"
+                    name="q"
+                    value="{{ quick_search }}"
+                    placeholder="For example: Python Developer"
+                />
+
+                <button type="submit">
+                    Search
+                </button>
+            </div>
+        </form>
+
+        <button
+            type="button"
+            id="advanced-search-toggle"
+            class="advanced-search-toggle"
+            aria-expanded="{% if advanced_search_active %}true{% else %}false{% endif %}"
+            aria-controls="advanced-search"
+        >
+            Advanced Search
+        </button>
+    </div>
+
+    <!-- Advanced search -->
+    <div
+        id="advanced-search"
+        class="advanced-search-box {% if advanced_search_active %}show{% endif %}"
+    >
+        <h3>Advanced Search</h3>
+
+        <p>
+            Complete one or more fields to narrow the job results.
+        </p>
+
+        <form
+            method="GET"
+            action="{% url 'jobs:job_list' %}"
+            class="advanced-search-form"
+        >
+            <div class="advanced-search-fields">
+
+                <div class="search-field">
+                    <label for="title">Job title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value="{{ title_search }}"
+                        placeholder="Software Developer"
+                    />
+                </div>
+
+                <div class="search-field">
+                    <label for="company">Company</label>
+                    <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value="{{ company_search }}"
+                        placeholder="Microsoft"
+                    />
+                </div>
+
+                <div class="search-field">
+                    <label for="location">Location</label>
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        value="{{ location_search }}"
+                        placeholder="Toronto"
+                    />
+                </div>
+
+                <div class="search-field">
+                    <label for="keyword">Keyword</label>
+                    <input
+                        type="text"
+                        id="keyword"
+                        name="keyword"
+                        value="{{ keyword_search }}"
+                        placeholder="Python, remote, senior..."
+                    />
+                </div>
+
+                <div class="search-field">
+                    <label for="sort">Sort results</label>
+
+                    <select id="sort" name="sort">
+                        <option
+                            value="newest"
+                            {% if sort == "newest" %}selected{% endif %}
+                        >
+                            Newest first
+                        </option>
+
+                        <option
+                            value="oldest"
+                            {% if sort == "oldest" %}selected{% endif %}
+                        >
+                            Oldest first
+                        </option>
+
+                        <option
+                            value="title"
+                            {% if sort == "title" %}selected{% endif %}
+                        >
+                            Job title A–Z
+                        </option>
+
+                        <option
+                            value="company"
+                            {% if sort == "company" %}selected{% endif %}
+                        >
+                            Company A–Z
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="advanced-search-buttons">
+                <button type="submit">
+                    Apply Filters
+                </button>
+
+                <a href="{% url 'jobs:job_list' %}">
+                    Clear Search
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Results heading -->
+    <div class="job-results-heading">
+        <div>
+            <h2>
+                {{ result_count }}
+                Job{{ result_count|pluralize }}
+                Found
+            </h2>
+
+            {% if quick_search %}
+                <p>
+                    Results for job title:
+                    <strong>{{ quick_search }}</strong>
+                </p>
+            {% elif advanced_search_active %}
+                <p>Results matching your selected filters.</p>
+            {% else %}
+                <p>All currently available jobs.</p>
+            {% endif %}
+        </div>
+
+        {% if quick_search or advanced_search_active %}
+            <a href="{% url 'jobs:job_list' %}">
+                View All Jobs
+            </a>
+        {% endif %}
+    </div>
+
+    <!-- Job results -->
+    <div class="jobs-results-list">
+
+        {% for job in jobs %}
+
+            <article class="job-result-card">
+                <div class="job-result-top">
+                    <div>
+                        <h3>
+                        
+                             {{ job.title }}
+                        </h3>
+
+                        <p class="job-company-name">
+                            {{ job.company }}
+                        </p>
+                    </div>
+
+                    <p class="job-posted-date">
+                        {{ job.created_at|date:"M d, Y" }}
+                    </p>
+                </div>
+
+                <div class="job-result-information">
+                    <p>
+                        <strong>Location:</strong>
+                        {{ job.location }}
+                    </p>
+
+                    <p>
+                        <strong>Company:</strong>
+                        {{ job.company }}
+                    </p>
+                </div>
+
+                <p class="job-result-description">
+                    {{ job.description|truncatewords:30 }}
+                </p>
+
+               
+                <a
+                    
+                    class="view-job-link"
+                >
+                    View Job Details
+                </a>
+            </article>
+
+        {% empty %}
+
+            <div class="no-job-results">
+                <h3>No jobs found</h3>
+
+                <p>
+                    Try another title, location, company, or keyword.
+                </p>
+
+                <a href="{% url 'jobs:job_list' %}">
+                    Clear Search
+                </a>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+{% endblock main %}
