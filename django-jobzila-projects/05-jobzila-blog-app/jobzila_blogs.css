@@ -1,0 +1,32 @@
+/* JobZila Blogs — append to static/css/styles.css */
+.blogs-section{width:100%;max-width:1200px;margin:0 auto;padding:48px 24px 72px;display:block}
+.blogs-header{max-width:780px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #e5e7eb}
+.blogs-eyebrow{display:inline-block;margin-bottom:12px;color:#bd6200;font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.blogs-header h1{font-size:clamp(2rem,4vw,3.4rem);line-height:1.13;letter-spacing:-.035em;color:#222;margin-bottom:16px}
+.blogs-header p{font-size:1.06rem;line-height:1.75;color:#626873}
+.blogs-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+.blogs-count{color:#666;font-size:.92rem}
+.blogs-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;width:100%}
+.blog-card{min-width:0;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #e5e7eb;border-radius:12px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.blog-card:hover{transform:translateY(-3px);border-color:#ff8500;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.blog-card:first-child{grid-column:span 2;grid-row:span 2}
+.blog-banner-wrap{aspect-ratio:16/9;background:linear-gradient(135deg,#252525,#765022);overflow:hidden}
+.blog-card:first-child .blog-banner-wrap{aspect-ratio:16/8}
+.blog-banner{width:100%;height:100%;object-fit:cover;display:block}
+.blog-banner-placeholder{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.5rem;letter-spacing:.05em}
+.blog-card-content{padding:22px;display:flex;flex-direction:column;flex:1}
+.blog-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.blog-topic{display:inline-block;padding:5px 10px;border-radius:30px;background:#fff2e5;color:#a95400;font-size:.73rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.blog-date{color:#747984;font-size:.8rem}
+.blog-card h2{font-size:1.2rem;line-height:1.35;margin:0 0 12px;letter-spacing:-.015em}
+.blog-card:first-child h2{font-size:clamp(1.5rem,2.5vw,2.1rem)}
+.blog-card h2 a{color:#252525;text-decoration:none}
+.blog-card h2 a:hover{color:#b75f00}
+.blog-description{color:#626873;line-height:1.65;font-size:.94rem;margin-bottom:20px}
+.blog-card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:16px;border-top:1px solid #eee}
+.blog-author{color:#626873;font-size:.82rem}
+.read-blog-link{color:#b75f00;text-decoration:none;font-size:.88rem;font-weight:800}
+.read-blog-link:hover{text-decoration:underline}
+.no-blog-results{grid-column:1/-1;text-align:center;padding:55px 24px;background:#f9fafb;border:1px dashed #d1d5db;border-radius:12px}
+@media(max-width:900px){.blogs-list{grid-template-columns:repeat(2,minmax(0,1fr))}.blog-card:first-child{grid-column:span 2;grid-row:auto}}
+@media(max-width:600px){.blogs-section{padding:28px 16px 50px}.blogs-list{grid-template-columns:1fr;gap:16px}.blog-card:first-child{grid-column:auto}.blog-card:first-child .blog-banner-wrap{aspect-ratio:16/9}.blog-card-content{padding:18px}}

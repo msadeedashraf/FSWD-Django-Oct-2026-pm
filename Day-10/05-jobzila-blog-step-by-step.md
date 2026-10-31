@@ -4,7 +4,6 @@
 [starter code](/django-jobzila-projects/04-jobzila-search/jobzilav3/)
 
 
-
 ### 
 
 ## JobZila v3: Adding Blog App 
