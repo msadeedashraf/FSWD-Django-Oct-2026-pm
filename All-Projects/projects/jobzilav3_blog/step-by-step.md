@@ -125,7 +125,7 @@ http://127.0.0.1:8000/admin/
 
 ---
 
-## Step 23. Register the Job model in admin
+## Step 23. Register the blog model in admin
 
 Open:
 
@@ -149,9 +149,9 @@ Add a few sample blogs from the admin panel.
 
 ---
 
-# Part 7 — Show Jobs on the Website
+# Part 7 — Show blog on the Website
 
-## Step 24. Create jobs URLs
+## Step 24. Create blog URLs
 
 Create:
 
@@ -174,7 +174,7 @@ urlpatterns = [
 
 ---
 
-## Step 25. Connect jobs URLs to the main project
+## Step 25. Connect URLs to the main project
 
 Open:
 
@@ -211,7 +211,7 @@ urlpatterns = [
 Open:
 
 ```text
-jobs/views.py
+blogs/views.py
 ```
 
 Add:
@@ -232,7 +232,7 @@ def blog(request):
 ---
 
 
-## Step 27. Create the job list template
+## Step 27. Create the blog list template
 
 Create this folder:
 
