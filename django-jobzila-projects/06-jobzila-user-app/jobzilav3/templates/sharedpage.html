@@ -29,6 +29,46 @@
           <li><a href="{% url 'terms' %}">Terms of Service</a></li>
           <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
           <li><a href="{% url 'contact' %}">Contact</a></li>
+  
+          {% if user.is_authenticated  %}
+
+
+          <!-- <li><a href="">Add Blog</a></li>
+          <li><a href="">Add Job</a></li>
+           -->
+
+          {% endif %}
+<li class="right-align">
+    {% if user.is_authenticated %}
+
+        <form
+            method="POST"
+            action="{% url 'users:logout' %}"
+            class="logout-form"
+        >
+            {% csrf_token %}
+
+            <button
+                class="logout-button"
+                type="submit"
+            >
+                Logout
+            </button>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'users:register' %}">
+            Register
+        </a>
+
+        <a href="{% url 'users:login' %}">
+            Login
+        </a>
+
+    {% endif %}
+</li>
+
         </ul>
       </nav>
     </header>

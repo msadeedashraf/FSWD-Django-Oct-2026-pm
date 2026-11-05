@@ -622,3 +622,230 @@ footer a:hover {
 .no-blog-results{grid-column:1/-1;text-align:center;padding:55px 24px;background:#f9fafb;border:1px dashed #d1d5db;border-radius:12px}
 @media(max-width:900px){.blogs-list{grid-template-columns:repeat(2,minmax(0,1fr))}.blog-card:first-child{grid-column:span 2;grid-row:auto}}
 @media(max-width:600px){.blogs-section{padding:28px 16px 50px}.blogs-list{grid-template-columns:1fr;gap:16px}.blog-card:first-child{grid-column:auto}.blog-card:first-child .blog-banner-wrap{aspect-ratio:16/9}.blog-card-content{padding:18px}}
+
+
+
+/* ========================================
+   LOGIN AND REGISTER
+======================================== */
+
+.auth-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-top: 5px solid #ff8500;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.auth-card h2 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.auth-intro {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.auth-form p {
+    margin-bottom: 15px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.auth-form input:focus {
+    border-color: #ff8500;
+    outline: 1px solid #ff8500;
+}
+
+.auth-form button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: #333;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.auth-form button:hover {
+    background-color: #ff8500;
+}
+
+.auth-form .helptext {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-form ul {
+    margin: 5px 0 10px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-form .errorlist {
+    margin: 0 0 10px;
+    padding: 10px;
+    border: 1px solid #d9534f;
+    border-radius: 3px;
+    background-color: #fff2f2;
+    color: #b52b27;
+    list-style-position: inside;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    color: #555;
+}
+
+.auth-footer a {
+    color: #d96f00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+    .auth-section {
+        padding: 20px 15px;
+    }
+
+    .auth-card {
+        padding: 20px;
+    }
+}
+
+
+/* Push login, register, or logout to the right */
+
+.nav-menu .right-align {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+
+/* Remove the form's default spacing */
+
+.logout-form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+
+/* Make logout look exactly like navigation links */
+
+.logout-button {
+    display: block;
+    padding: 6px 0;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    color: #f8e1cc;
+}
+
+@media screen and (max-width: 700px) {
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .nav-menu a {
+        width: 100%;
+        padding: 12px 5px;
+    }
+
+    .nav-menu .right-align {
+        width: 100%;
+        margin-left: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav-menu .right-align a,
+    .nav-menu .logout-form,
+    .nav-menu .logout-button {
+        width: 100%;
+    }
+
+    .nav-menu .right-align a,
+    .nav-menu .logout-button {
+        padding: 12px 5px;
+        text-align: left;
+    }
+
+    .nav-menu .right-align a + a,
+    .nav-menu .logout-form {
+        border-top: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero-section h2 {
+        font-size: 28px;
+    }
+}

@@ -30,6 +30,7 @@ urlpatterns = [
     path("terms/", views.terms, name="terms"),
     path("privacy/", views.privacy, name="privacy"),
     path("contact/", views.contact, name="contact"),
+    path("users/", include("users.urls")),
 ]
 
 if settings.DEBUG:
