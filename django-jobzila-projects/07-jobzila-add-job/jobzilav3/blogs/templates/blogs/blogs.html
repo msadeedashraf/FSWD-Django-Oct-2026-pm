@@ -1,0 +1,42 @@
+{% extends "sharedpage.html" %}
+{% block title %}Career Insights | JobZila{% endblock title %}
+{% block main %}
+<section class="blogs-section">
+  <header class="blogs-header">
+    <span class="blogs-eyebrow">JobZila / Insights</span>
+    <h1>Career advice worth reading.</h1>
+    <p>Practical articles on job searching, interviews, skills, and career growth.</p>
+  </header>
+  <div class="blogs-toolbar">
+    <strong>Latest articles</strong>
+    <span class="blogs-count">{{ blogs|length }} article{{ blogs|length|pluralize }}</span>
+  </div>
+  <div class="blogs-list">
+    {% for b in blogs %}
+      <article class="blog-card">
+        <div class="blog-banner-wrap">
+          {% if b.banner %}
+            <img class="blog-banner" src="{{ b.banner.url }}" alt="{{ b.title }}" loading="lazy">
+          {% else %}
+            <div class="blog-banner-placeholder">JOBZILA INSIGHTS</div>
+          {% endif %}
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-top">
+            <span class="blog-topic">Career Insights</span>
+            <time class="blog-date" datetime="{{ b.date|date:'Y-m-d' }}">{{ b.date|date:"M d, Y" }}</time>
+          </div>
+          <h2><a href="{{ b.link }}">{{ b.title }}</a></h2>
+          <p class="blog-description">{{ b.body|truncatewords:30 }}</p>
+          <div class="blog-card-footer">
+            <span class="blog-author">By {{ b.author }}</span>
+            <a class="read-blog-link" href="{{ b.link }}">Read article →</a>
+          </div>
+        </div>
+      </article>
+    {% empty %}
+      <div class="no-blog-results"><h2>No articles yet</h2><p>Check back for career advice and resources.</p></div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock main %}
