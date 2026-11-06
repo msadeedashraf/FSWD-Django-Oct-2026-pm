@@ -558,3 +558,26 @@ http://127.0.0.1:8000/jobs/add/
 ```
 
 If you are not logged in, Django should send you to the login page.
+
+Go to Job List Page to update the view details link:
+
+```text
+jobs/templates/jobs/job_list.html
+```
+
+locate the View Job Details and replace it with this:
+
+```html
+
+   <a
+                    
+                    class="view-job-link"
+                    
+
+                     href="{% url 'jobs:job_detail' job_id=job.id %}"
+
+                >
+                    View Job Details
+                </a>
+
+```
