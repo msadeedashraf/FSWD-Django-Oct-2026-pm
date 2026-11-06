@@ -205,9 +205,10 @@ def add_job(request):
         request,
         "jobs/add_job.html",
         {"form": form},
-    )```
+    )
+    ```
 
-This page is protected. Only logged-in users can add a job.
+- This page is protected. Only logged-in users can add a job.
 
 ---
 

@@ -1,8 +1,10 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from .models import Job
-
+from .forms import CreateJobForm
+from .models import Job
 
 def job_list(request):
     # Quick-search value
@@ -76,3 +78,36 @@ def job_list(request):
     }
 
     return render(request, "jobs/job_list.html", context)
+
+
+def job_detail(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+
+    return render(
+        request,
+        "jobs/job_detail.html",
+        {"job": job},
+    )
+
+
+@login_required(login_url="/users/login/")
+def add_job(request):
+    if request.method == "POST":
+        form = CreateJobForm(request.POST)
+
+        if form.is_valid():
+            job = form.save(commit=False)
+            job.posted_by = request.user
+            job.save()
+
+            return redirect("jobs:job_detail", job_id=job.id)
+
+    else:
+        form = CreateJobForm()
+
+    return render(
+        request,
+        "jobs/add_job.html",
+        {"form": form},
+    )
+
