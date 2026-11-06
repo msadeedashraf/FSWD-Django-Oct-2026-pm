@@ -210,6 +210,18 @@ def add_job(request):
 
 ```
 
+- This page is protected. Only logged-in users can add a job.
+
+---
+
+## Step 43. Create the add-job template
+
+Create:
+
+```text
+jobs/templates/jobs/add_job.html
+```
+---
 
 Add:
 
