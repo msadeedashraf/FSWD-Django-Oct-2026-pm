@@ -207,6 +207,7 @@ def add_job(request):
         "jobs/add_job.html",
         {"form": form},
     )
+
 ```
 
 - This page is protected. Only logged-in users can add a job.
@@ -220,6 +221,7 @@ Create:
 ```text
 jobs/templates/jobs/add_job.html
 ```
+---
 
 Add:
 
