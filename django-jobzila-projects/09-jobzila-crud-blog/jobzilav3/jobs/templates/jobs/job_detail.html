@@ -1,0 +1,81 @@
+{% extends "sharedpage.html" %}
+
+{% block title %}
+{{ job.title }} | JobZila
+{% endblock title %}
+
+{% block main %}
+<section class="jobs-listing-section">
+
+    <article class="jobs-listing job-detail-card">
+
+        <h2>{{ job.title }}</h2>
+
+        <p>
+            <strong>Company:</strong>
+            {{ job.company }}
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            {{ job.location }}
+        </p>
+        <p>
+            <strong>Create By:</strong>
+            {{ job.posted_by }}
+        </p>
+
+        <p>
+            <strong>Posted:</strong>
+            {{ job.created_at|date:"M d, Y" }}
+        </p>
+
+        <div class="job-detail-description">
+            <h3>Job Description</h3>
+
+            <p>
+                {{ job.description|linebreaks }}
+            </p>
+        </div>
+
+        {% if job.apply_link %}
+            <a
+                href="{{ job.apply_link }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="view-job-link"
+            >
+                Apply for this Job
+            </a>
+        {% endif %}
+
+        {% if user == job.posted_by %}
+            <div class="job-management-actions">
+
+                <a
+                    href="{% url 'jobs:edit_job' job.id %}"
+                    class="edit-job-link"
+                >
+                    Edit Job
+                </a>
+
+                <a
+                    href="{% url 'jobs:delete_job' job.id %}"
+                    class="delete-job-link"
+                >
+                    Delete Job
+                </a>
+
+            </div>
+        {% endif %}
+
+        <p class="back-to-jobs">
+            <a href="{% url 'jobs:job_list' %}">
+                Back to Jobs
+            </a>
+        </p>
+
+    </article>
+
+</section>
+{% endblock main %}

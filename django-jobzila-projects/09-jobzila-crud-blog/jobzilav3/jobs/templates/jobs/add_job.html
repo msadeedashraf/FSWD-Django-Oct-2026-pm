@@ -1,0 +1,83 @@
+{% extends 'sharedpage.html' %}
+
+{% block title %}Add Job | JobZila{% endblock title %}
+
+{% block main %}
+<section class="job-form-section">
+
+    <div class="job-form-card">
+        <h2>Add New Job</h2>
+
+        <p class="job-form-intro">
+            Complete the form below to publish a new job opportunity.
+        </p>
+
+        <form method="POST" class="job-form">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <div class="job-form-group">
+                <label for="{{ form.title.id_for_label }}">
+                    Job Title
+                </label>
+
+                {{ form.title }}
+                {{ form.title.errors }}
+            </div>
+
+            <div class="job-form-group">
+                <label for="{{ form.company.id_for_label }}">
+                    Company
+                </label>
+
+                {{ form.company }}
+                {{ form.company.errors }}
+            </div>
+
+            <div class="job-form-group">
+                <label for="{{ form.location.id_for_label }}">
+                    Location
+                </label>
+
+                {{ form.location }}
+                {{ form.location.errors }}
+            </div>
+
+            <div class="job-form-group">
+                <label for="{{ form.description.id_for_label }}">
+                    Job Description
+                </label>
+
+                {{ form.description }}
+                {{ form.description.errors }}
+            </div>
+
+            <div class="job-form-group">
+                <label for="{{ form.apply_link.id_for_label }}">
+                    Application Link
+                </label>
+
+                {{ form.apply_link }}
+
+                <small>
+                    Optional: enter the website where applicants can apply.
+                </small>
+
+                {{ form.apply_link.errors }}
+            </div>
+
+            <div class="job-form-buttons">
+                <button type="submit">
+                    Save Job
+                </button>
+
+                <a href="{% url 'jobs:job_list' %}">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+
+</section>
+{% endblock main %}
