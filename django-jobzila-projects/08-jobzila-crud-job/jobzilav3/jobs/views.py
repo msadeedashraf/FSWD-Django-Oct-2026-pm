@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -107,6 +108,62 @@ def add_job(request):
     return render(
         request,
         "jobs/add_job.html",
-        {"form": form},
+        {"form": form
+         
+         },
     )
 
+
+
+
+@login_required(login_url="/users/login/")
+def edit_job(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+
+    # Only the person who posted the job can edit it.
+    if job.posted_by != request.user:
+        raise PermissionDenied
+
+    if request.method == "POST":
+        form = CreateJobForm(
+            request.POST,
+            instance=job,
+        )
+
+        if form.is_valid():
+            form.save()
+
+            return redirect(
+                "jobs:job_detail",
+                job_id=job.id,
+            )
+    else:
+        form = CreateJobForm(instance=job)
+
+    return render(
+        request,
+        "jobs/edit_job.html",
+        {
+            "form": form,
+            "job": job,
+        },
+    )
+
+
+@login_required(login_url="/users/login/")
+def delete_job(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+
+    # Only the person who posted the job can delete it.
+    if job.posted_by != request.user:
+        raise PermissionDenied
+
+    if request.method == "POST":
+        job.delete()
+        return redirect("jobs:job_list")
+
+    return render(
+        request,
+        "jobs/delete_job.html",
+        {"job": job},
+    )

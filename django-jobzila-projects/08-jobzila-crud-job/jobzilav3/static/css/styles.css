@@ -1000,3 +1000,135 @@ footer a:hover {
     }
 
 }
+
+
+/* ========================================
+   EDIT AND DELETE JOB
+======================================== */
+
+.job-management-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.edit-job-link,
+.delete-job-link {
+    display: inline-block;
+    padding: 9px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.edit-job-link {
+    background-color: #333;
+    color: white;
+}
+
+.edit-job-link:hover {
+    background-color: #ff8500;
+}
+
+.delete-job-link {
+    border: 1px solid #c62828;
+    background-color: white;
+    color: #c62828;
+}
+
+.delete-job-link:hover {
+    background-color: #c62828;
+    color: white;
+}
+
+.back-to-jobs {
+    margin-top: 20px;
+}
+
+.back-to-jobs a {
+    color: #d96f00;
+    text-decoration: none;
+}
+
+.back-to-jobs a:hover {
+    text-decoration: underline;
+}
+
+
+/* Delete confirmation */
+
+.delete-job-card {
+    max-width: 600px;
+}
+
+.delete-warning {
+    margin: 15px 0;
+    padding: 12px;
+    border: 1px solid #c62828;
+    border-radius: 3px;
+    background-color: #fff5f5;
+    color: #a61b1b;
+    font-weight: bold;
+}
+
+.delete-job-information {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #f8f8f8;
+}
+
+.delete-job-information h3 {
+    margin-bottom: 5px;
+}
+
+.delete-job-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.delete-job-button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 3px;
+    background-color: #c62828;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.delete-job-button:hover {
+    background-color: #941c1c;
+}
+
+.delete-job-form a {
+    color: #d96f00;
+    text-decoration: none;
+}
+
+.delete-job-form a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+    .job-management-actions,
+    .delete-job-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .edit-job-link,
+    .delete-job-link,
+    .delete-job-button,
+    .delete-job-form a {
+        width: 100%;
+        text-align: center;
+    }
+}
