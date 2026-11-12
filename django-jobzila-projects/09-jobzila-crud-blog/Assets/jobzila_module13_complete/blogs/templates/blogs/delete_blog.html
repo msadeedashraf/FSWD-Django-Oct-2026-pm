@@ -1,0 +1,9 @@
+{% extends 'sharedpage.html' %}
+{% block title %}Delete Blog | JobZila{% endblock title %}
+{% block main %}
+<section class="blog-form-section"><div class="blog-form-card">
+<h2>Delete Blog</h2><p>Are you sure you want to permanently delete <strong>{{ post.title }}</strong>?</p>
+<form method="post" class="blog-form">{% csrf_token %}
+<div class="blog-form-buttons"><button class="delete-blog-button" type="submit">Yes, Delete Blog</button><a href="{% url 'blogs:blog_detail' post.id %}">Cancel</a></div>
+</form></div></section>
+{% endblock main %}

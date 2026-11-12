@@ -1,0 +1,11 @@
+{% extends 'sharedpage.html' %}
+{% block title %}Edit Blog | JobZila{% endblock title %}
+{% block main %}
+<section class="blog-form-section"><div class="blog-form-card">
+<h2>Edit {{ post.title }}</h2>
+<form method="post" enctype="multipart/form-data" class="blog-form">
+{% csrf_token %}
+{{ form.as_p }}
+<div class="blog-form-buttons"><button type="submit">Update Blog</button><a href="{% url 'blogs:blog_detail' post.id %}">Cancel</a></div>
+</form></div></section>
+{% endblock main %}
