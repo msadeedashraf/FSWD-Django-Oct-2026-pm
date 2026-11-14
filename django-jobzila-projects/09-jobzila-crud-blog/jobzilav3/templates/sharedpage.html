@@ -30,14 +30,10 @@
           <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
           <li><a href="{% url 'contact' %}">Contact</a></li>
   
-          {% if user.is_authenticated  %}
-
-
-          <!-- <li><a href="">Add Blog</a></li> -->
-         <li> <a href="{% url 'jobs:add_job' %}">Add Job</a></li>
-          
-
-          {% endif %}
+       {% if user.is_authenticated %}
+  <li><a href="{% url 'blogs:add_blog' %}">Add Blog</a></li>
+  <li><a href="{% url 'jobs:add_job' %}">Add Job</a></li>
+{% endif %}
 <li class="right-align">
     {% if user.is_authenticated %}
 

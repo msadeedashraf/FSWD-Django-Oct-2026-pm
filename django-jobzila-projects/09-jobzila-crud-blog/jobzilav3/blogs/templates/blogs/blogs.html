@@ -26,11 +26,17 @@
             <span class="blog-topic">Career Insights</span>
             <time class="blog-date" datetime="{{ b.date|date:'Y-m-d' }}">{{ b.date|date:"M d, Y" }}</time>
           </div>
-          <h2><a href="{{ b.link }}">{{ b.title }}</a></h2>
+          <h2><a href="{% url 'blogs:blog_detail' b.id %}">{{ b.title }}</a></h2>
           <p class="blog-description">{{ b.body|truncatewords:30 }}</p>
           <div class="blog-card-footer">
-            <span class="blog-author">By {{ b.author }}</span>
-            <a class="read-blog-link" href="{{ b.link }}">Read article →</a>
+            <span class="blog-author">By {{ b.author_display_name }} · {{ b.author }}</span>
+            <a class="read-blog-link" href="{% url 'blogs:blog_detail' b.id %}">Read article →</a>
+            {% if user.is_authenticated and b.posted_by_id == user.id %}
+              <div class="blog-management-actions">
+                <a href="{% url 'blogs:edit_blog' b.id %}">Edit</a>
+                <a href="{% url 'blogs:delete_blog' b.id %}">Delete</a>
+              </div>
+            {% endif %}
           </div>
         </div>
       </article>

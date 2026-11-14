@@ -1,0 +1,14 @@
+{% extends 'sharedpage.html' %}
+{% block title %}{{ post.title }} | JobZila{% endblock title %}
+{% block main %}
+<section class="blog-form-section"><article class="blog-form-card">
+<h1>{{ post.title }}</h1>
+<p>By {{ post.author_display_name }} · {{ post.author }} · {{ post.date|date:'M d, Y' }}</p>
+{% if post.banner %}<img class="blog-banner" src="{{ post.banner.url }}" alt="{{ post.title }}">{% endif %}
+<div class="blog-body">{{ post.body|linebreaks }}</div>
+{% if user.is_authenticated and post.posted_by_id == user.id %}
+<div class="blog-management-actions"><a href="{% url 'blogs:edit_blog' post.id %}">Edit</a> <a href="{% url 'blogs:delete_blog' post.id %}">Delete</a></div>
+{% endif %}
+<p><a href="{% url 'blogs:blogs' %}">Back to Blogs</a></p>
+</article></section>
+{% endblock main %}

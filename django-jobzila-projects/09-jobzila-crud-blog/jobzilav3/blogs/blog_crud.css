@@ -1,0 +1,14 @@
+/* Append to your existing static/css/styles.css */
+.blog-form-section { display:flex; justify-content:center; padding:40px 20px; }
+.blog-form-card { width:100%; max-width:800px; background:white; border:1px solid #ddd; border-top:5px solid #ff8500; border-radius:5px; padding:25px; }
+.blog-form p { margin:0 0 18px; }
+.blog-form label { display:block; font-weight:700; margin-bottom:6px; }
+.blog-form input, .blog-form textarea { box-sizing:border-box; width:100%; padding:10px; border:1px solid #ccc; border-radius:4px; font:inherit; }
+.blog-form input[type=file] { padding:8px; }
+.blog-form-buttons, .blog-management-actions { display:flex; align-items:center; gap:14px; margin-top:20px; }
+.blog-form button { padding:10px 18px; border:0; border-radius:3px; color:white; background:#333; cursor:pointer; }
+.blog-form button:hover { background:#ff8500; }
+.blog-form .delete-blog-button { background:#b42318; }
+.blog-management-actions a { color:#d96f00; font-weight:bold; }
+.blog-body { line-height:1.7; overflow-wrap:anywhere; }
+@media(max-width:700px) { .blog-form-buttons { flex-direction:column; align-items:stretch; } }
