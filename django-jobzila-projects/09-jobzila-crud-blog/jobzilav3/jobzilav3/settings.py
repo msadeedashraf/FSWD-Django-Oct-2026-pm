@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "jobs",
      "blogs",
       "users",
+     
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,17 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+
+# ==========================================
+# SESSION SECURITY
+# ==========================================
+
+# Expire login after 10 minutes of inactivity
+SESSION_COOKIE_AGE = 300
+
+# Refresh session expiry on every request
+SESSION_SAVE_EVERY_REQUEST = True
+
+# Also expire the session when browser closes
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

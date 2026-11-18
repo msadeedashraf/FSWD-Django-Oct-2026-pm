@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JobZila — Four Layout Design Lab</title>
+    <style>
+      :root,
+      [data-theme="warm"] {
+        --color-primary: #ff8500;
+        --color-primary-hover: #d96f00;
+        --color-bg: #fff8ef;
+        --color-surface: #fff;
+        --color-surface-alt: #fff0dd;
+        --color-text: #292622;
+        --color-muted: #746b62;
+        --color-border: #e9d9c8;
+        --color-header: #302a25;
+        --color-on-primary: #21170b;
+        --color-chip: #fff0dd;
+        --shadow: 0 12px 35px rgba(77, 45, 15, 0.08);
+        --radius: 16px;
+        --space: 22px;
+      }
+      [data-theme="light"] {
+        --color-primary: #ed7900;
+        --color-primary-hover: #c96300;
+        --color-bg: #f4f6f9;
+        --color-surface: #fff;
+        --color-surface-alt: #f0f3f7;
+        --color-text: #202b39;
+        --color-muted: #637184;
+        --color-border: #e0e5ec;
+        --color-header: #1d2937;
+        --color-on-primary: #fff;
+        --color-chip: #fff0e2;
+        --shadow: 0 12px 35px rgba(26, 43, 64, 0.07);
+      }
+      [data-theme="dark"] {
+        --color-primary: #ff9a30;
+        --color-primary-hover: #ffb866;
+        --color-bg: #11151b;
+        --color-surface: #1d242e;
+        --color-surface-alt: #252f3b;
+        --color-text: #f1f3f6;
+        --color-muted: #a9b3c0;
+        --color-border: #394453;
+        --color-header: #0c1016;
+        --color-on-primary: #21170b;
+        --color-chip: #3b3129;
+        --shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.5;
+      }
+      button,
+      select,
+      input {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button:focus-visible,
+      select:focus-visible,
+      input:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+      .site-header {
+        background: var(--color-header);
+        color: #fff;
+        padding: 16px max(20px, calc((100vw - 1250px) / 2));
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        font-size: 25px;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+      .brand b {
+        color: var(--color-primary);
+      }
+      .toplinks {
+        display: flex;
+        gap: 23px;
+        align-items: center;
+        font-size: 14px;
+      }
+      .toplinks span {
+        opacity: 0.8;
+      }
+      .lab {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 25px 20px 70px;
+      }
+      .lab-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 22px;
+      }
+      .lab-head h1 {
+        font-size: clamp(23px, 3vw, 33px);
+        margin: 0 0 4px;
+        letter-spacing: -0.04em;
+      }
+      .lab-head p {
+        margin: 0;
+        color: var(--color-muted);
+      }
+      .controls {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .control {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--color-muted);
+      }
+      select {
+        min-width: 150px;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        color: var(--color-text);
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
+      .layout-tabs,
+      .page-tabs {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .tab {
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        color: var(--color-text);
+        padding: 10px 15px;
+        border-radius: 11px;
+        font-weight: 700;
+      }
+      .tab.active {
+        background: var(--color-primary);
+        color: var(--color-on-primary);
+        border-color: var(--color-primary);
+      }
+      .page-tabs {
+        margin-bottom: 25px;
+      }
+      .page-tabs .tab {
+        padding: 8px 20px;
+      }
+      .intro {
+        margin: 0 0 18px;
+        color: var(--color-muted);
+        font-size: 14px;
+      }
+      .panel {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+      .hero {
+        padding: 35px;
+        border-radius: 20px;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        margin-bottom: 22px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 900;
+        color: var(--color-primary-hover);
+      }
+      .hero h2 {
+        font-size: clamp(29px, 4vw, 49px);
+        line-height: 1.08;
+        letter-spacing: -0.05em;
+        margin: 10px 0;
+      }
+      .hero p {
+        color: var(--color-muted);
+        max-width: 650px;
+      }
+      .searchbar {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .searchbar input {
+        flex: 1;
+        min-width: 170px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        color: var(--color-text);
+        padding: 14px;
+        border-radius: 10px;
+      }
+      .primary {
+        background: var(--color-primary);
+        color: var(--color-on-primary);
+        border: 0;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-weight: 800;
+      }
+      .secondary {
+        background: var(--color-surface-alt);
+        color: var(--color-text);
+        border: 1px solid var(--color-border);
+        padding: 10px 14px;
+        border-radius: 9px;
+        font-weight: 700;
+      }
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 20px 0 14px;
+      }
+      .section-head h3 {
+        margin: 0;
+        font-size: 21px;
+        letter-spacing: -0.03em;
+      }
+      .muted {
+        color: var(--color-muted);
+      }
+      .small {
+        font-size: 12px;
+      }
+      .job-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 19px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-width: 0;
+      }
+      .job-card:hover,
+      .blog-card:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-2px);
+      }
+      .job-card,
+      .blog-card {
+        transition:
+          transform 0.18s,
+          border-color 0.18s;
+      }
+      .job-top {
+        display: flex;
+        gap: 13px;
+        align-items: flex-start;
+      }
+      .logo {
+        width: 47px;
+        height: 47px;
+        flex: 0 0 47px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: var(--color-surface-alt);
+        color: var(--color-primary-hover);
+        font-weight: 900;
+        font-size: 21px;
+      }
+      .job-top h4 {
+        margin: 0;
+        font-size: 17px;
+        letter-spacing: -0.025em;
+      }
+      .job-top p {
+        margin: 3px 0 0;
+        color: var(--color-muted);
+        font-size: 13px;
+      }
+      .tag-row {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        background: var(--color-chip);
+        border-radius: 999px;
+        padding: 5px 9px;
+        color: var(--color-text);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .job-desc {
+        color: var(--color-muted);
+        font-size: 13px;
+        margin: 0;
+      }
+      .job-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: auto;
+      }
+      .job-bottom strong {
+        font-size: 13px;
+      }
+      .job-bottom button {
+        font-size: 12px;
+      }
+      .blog-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .blog-art {
+        height: 150px;
+        display: flex;
+        align-items: end;
+        padding: 16px;
+        background: linear-gradient(135deg, #a94d18, #ffbd72);
+        color: #fff;
+        font-size: 35px;
+        font-weight: 900;
+      }
+      .blog-card:nth-child(2) .blog-art {
+        background: linear-gradient(135deg, #233d54, #62a7b6);
+      }
+      .blog-card:nth-child(3) .blog-art {
+        background: linear-gradient(135deg, #5b3d78, #b18ed0);
+      }
+      .blog-card:nth-child(4) .blog-art {
+        background: linear-gradient(135deg, #345c48, #9fca9b);
+      }
+      .blog-content {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .blog-content h4 {
+        font-size: 18px;
+        line-height: 1.3;
+        margin: 9px 0;
+      }
+      .blog-content p {
+        font-size: 13px;
+        color: var(--color-muted);
+        margin: 0 0 14px;
+      }
+      .blog-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--color-muted);
+        margin-top: auto;
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .filters {
+        padding: 20px;
+      }
+      .filters h4 {
+        margin: 0 0 17px;
+      }
+      .filters label {
+        display: block;
+        font-size: 13px;
+        padding: 9px 0;
+        color: var(--color-muted);
+      }
+      .filters input {
+        accent-color: var(--color-primary);
+      }
+      .side-layout {
+        display: grid;
+        grid-template-columns: 245px minmax(0, 1fr);
+        gap: 19px;
+      }
+      .stack {
+        display: grid;
+        gap: 13px;
+      }
+      .split-layout {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.9fr) minmax(350px, 1.1fr);
+        gap: 17px;
+      }
+      .split-list {
+        display: grid;
+        gap: 10px;
+      }
+      .split-list .job-card {
+        cursor: pointer;
+      }
+      .split-list .job-card.selected {
+        border: 2px solid var(--color-primary);
+      }
+      .detail {
+        padding: 27px;
+        position: sticky;
+        top: 18px;
+        align-self: start;
+      }
+      .detail h2 {
+        margin: 10px 0;
+      }
+      .detail p {
+        color: var(--color-muted);
+      }
+      .detail li {
+        margin: 11px 0;
+      }
+      .detail ul {
+        padding-left: 22px;
+      }
+      .split-list .job-desc {
+        display: none;
+      }
+      .split-list .job-bottom button {
+        display: none;
+      }
+      .discovery-hero {
+        background: linear-gradient(
+          125deg,
+          var(--color-header) 0%,
+          #6c3d22 100%
+        );
+        color: #fff;
+        display: grid;
+        grid-template-columns: 1.5fr 0.8fr;
+        gap: 20px;
+        align-items: center;
+      }
+      .discovery-hero p {
+        color: #f2d9c9;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .stat {
+        padding: 18px;
+        background: #ffffff19;
+        border: 1px solid #ffffff35;
+        border-radius: 14px;
+      }
+      .stat strong {
+        display: block;
+        font-size: 27px;
+      }
+      .categories {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .category {
+        padding: 20px;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+        font-weight: 800;
+      }
+      .category span {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .market-hero {
+        text-align: center;
+      }
+      .market-hero p {
+        margin: 12px auto;
+      }
+      .market-hero .searchbar {
+        max-width: 780px;
+        margin: 23px auto 0;
+      }
+      .market-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .market-grid .job-card {
+        min-height: 250px;
+      }
+      .blog-feature {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr 1fr;
+        gap: 16px;
+      }
+      .blog-feature .blog-card:first-child {
+        grid-row: span 2;
+      }
+      .blog-feature .blog-card:first-child .blog-art {
+        height: 260px;
+      }
+      .blog-feature .blog-card:first-child .blog-content h4 {
+        font-size: 23px;
+      }
+      .blog-feature .blog-card:not(:first-child) .blog-art {
+        height: 115px;
+      }
+      .blog-feature .blog-card:nth-child(4) {
+        grid-column: 2/4;
+      }
+      .blog-feature .blog-card:nth-child(4) .blog-art {
+        height: 115px;
+      }
+      .editorial-list {
+        display: grid;
+        gap: 12px;
+      }
+      .editorial-list .blog-card {
+        flex-direction: row;
+      }
+      .editorial-list .blog-art {
+        height: auto;
+        width: 220px;
+        flex: 0 0 220px;
+      }
+      .editorial-list .blog-content {
+        justify-content: center;
+      }
+      .magazine-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .magazine-grid .blog-card:first-child {
+        grid-column: span 2;
+      }
+      .magazine-grid .blog-card:first-child .blog-art {
+        height: 250px;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .footer-note {
+        margin-top: 30px;
+        padding: 18px;
+        color: var(--color-muted);
+        border-top: 1px solid var(--color-border);
+        font-size: 13px;
+      }
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: var(--color-header);
+        color: #fff;
+        box-shadow: var(--shadow);
+        display: none;
+        z-index: 3;
+      }
+      @media (max-width: 900px) {
+        .side-layout {
+          grid-template-columns: 200px 1fr;
+        }
+        .grid3,
+        .market-grid,
+        .magazine-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .split-layout {
+          grid-template-columns: 1fr;
+        }
+        .detail {
+          position: static;
+        }
+        .blog-feature {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .blog-feature .blog-card:first-child {
+          grid-column: span 2;
+          grid-row: auto;
+        }
+        .blog-feature .blog-card:nth-child(4) {
+          grid-column: auto;
+        }
+        .categories {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 620px) {
+        .toplinks {
+          display: none;
+        }
+        .lab {
+          padding: 18px 13px 45px;
+        }
+        .hero {
+          padding: 23px;
+        }
+        .side-layout,
+        .grid3,
+        .grid2,
+        .market-grid,
+        .magazine-grid,
+        .discovery-hero,
+        .blog-feature {
+          grid-template-columns: 1fr;
+        }
+        .side-layout > .filters {
+          display: none;
+        }
+        .blog-feature .blog-card:first-child,
+        .magazine-grid .blog-card:first-child,
+        .blog-feature .blog-card:nth-child(4) {
+          grid-column: auto;
+        }
+        .categories {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .editorial-list .blog-card {
+          flex-direction: column;
+        }
+        .editorial-list .blog-art {
+          width: 100%;
+          height: 145px;
+          flex: auto;
+        }
+        .stat-grid {
+          margin-top: 10px;
+        }
+        .tab {
+          padding: 9px 11px;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="warm">
+    <header class="site-header">
+      <div class="brand">
+        Job<b>Zila</b
+        ><span
+          style="
+            font-size: 11px;
+            letter-spacing: 0;
+            font-weight: 500;
+            margin-left: 12px;
+            opacity: 0.7;
+          "
+          >DESIGN LAB</span
+        >
+      </div>
+      <nav class="toplinks">
+        <span>Find Jobs</span><span>Career Insights</span><span>Companies</span
+        ><span>Sign In</span
+        ><button
+          class="primary"
+          onclick="toast('Demo only — no account changes')"
+        >
+          Post a Job
+        </button>
+      </nav>
+    </header>
+    <main class="lab">
+      <div class="lab-head">
+        <div>
+          <h1>Explore JobZila's next design</h1>
+          <p>
+            Compare four layouts and three shared color themes without touching
+            Django.
+          </p>
+        </div>
+        <div class="controls">
+          <label class="control"
+            >COLOR THEME<select id="theme">
+              <option value="warm">Warm Light</option>
+              <option value="light">Clean Light</option>
+              <option value="dark">Dark</option>
+            </select></label
+          ><label class="control"
+            >VIEWPORT<select id="viewport">
+              <option value="full">Full Width</option>
+              <option value="narrow">Mobile Preview</option>
+            </select></label
+          >
+        </div>
+      </div>
+      <div class="layout-tabs" id="layouts">
+        <button class="tab active" data-layout="1">01 · Professional</button
+        ><button class="tab" data-layout="2">02 · Split View</button
+        ><button class="tab" data-layout="3">03 · Career Discovery</button
+        ><button class="tab" data-layout="4">04 · Startup Marketplace</button>
+      </div>
+      <div class="page-tabs" id="pages">
+        <button class="tab active" data-page="jobs">Jobs</button
+        ><button class="tab" data-page="blogs">Blogs</button>
+      </div>
+      <p class="intro" id="description"></p>
+      <div id="preview"></div>
+      <div class="footer-note">
+        Standalone design prototype based on your existing JobZila CSS. Sample
+        content is fictional; navigation and applications are not connected to
+        Django. Theme tokens are centralized in CSS.
+      </div>
+    </main>
+    <div id="toast" class="toast" role="status"></div>
+    <script>
+      const jobs = [
+        {
+          title: "Senior Python Developer",
+          company: "Northstar Digital",
+          place: "Toronto, ON · Hybrid",
+          salary: "$105k–$135k",
+          tags: ["Full-time", "Python", "Hybrid"],
+          initial: "N",
+          desc: "Build scalable backend services and collaborate with a modern product engineering team.",
+        },
+        {
+          title: "Data Analyst",
+          company: "Maple Analytics",
+          place: "Hamilton, ON · Remote",
+          salary: "$72k–$92k",
+          tags: ["Remote", "SQL", "Power BI"],
+          initial: "M",
+          desc: "Turn business data into useful insights through dashboards, reporting and analytics.",
+        },
+        {
+          title: "Frontend React Developer",
+          company: "PixelForge Studio",
+          place: "Mississauga, ON",
+          salary: "$85k–$110k",
+          tags: ["Full-time", "React", "UI/UX"],
+          initial: "P",
+          desc: "Create intuitive interfaces and reusable components for customer-facing products.",
+        },
+        {
+          title: "Cloud Solutions Engineer",
+          company: "BluePeak Systems",
+          place: "Ottawa, ON · Hybrid",
+          salary: "$110k–$145k",
+          tags: ["Azure", "Cloud", "Hybrid"],
+          initial: "B",
+          desc: "Design and support reliable cloud infrastructure and deployment pipelines.",
+        },
+        {
+          title: "Junior UX Designer",
+          company: "BrightPath Labs",
+          place: "Burlington, ON",
+          salary: "$60k–$78k",
+          tags: ["Junior", "Design", "On-site"],
+          initial: "B",
+          desc: "Work with researchers and developers to improve accessible digital experiences.",
+        },
+        {
+          title: "Machine Learning Engineer",
+          company: "VectorWorks AI",
+          place: "Toronto, ON · Remote",
+          salary: "$125k–$160k",
+          tags: ["AI", "Python", "Remote"],
+          initial: "V",
+          desc: "Prototype and deploy practical machine learning services for real-world applications.",
+        },
+      ];
+      const blogs = [
+        {
+          title: "How to write a resume recruiters actually read",
+          cat: "Career Advice",
+          date: "Nov 12, 2026",
+          author: "JobZila Editorial",
+          symbol: "CV",
+          desc: "A practical guide to making your experience stand out.",
+        },
+        {
+          title: "The interview questions worth preparing for",
+          cat: "Interviews",
+          date: "Nov 10, 2026",
+          author: "JobZila Editorial",
+          symbol: "Q&A",
+          desc: "Build confident answers without memorizing scripts.",
+        },
+        {
+          title: "Skills that help you move into data analytics",
+          cat: "Learning",
+          date: "Nov 8, 2026",
+          author: "JobZila Editorial",
+          symbol: "DATA",
+          desc: "A realistic roadmap for your first analytics role.",
+        },
+        {
+          title: "How to navigate a career change",
+          cat: "Career Growth",
+          date: "Nov 6, 2026",
+          author: "JobZila Editorial",
+          symbol: "NEXT",
+          desc: "Break your next career move into manageable steps.",
+        },
+      ];
+      let layout = "1",
+        page = "jobs",
+        selected = 0,
+        query = "";
+      const $ = (s) => document.querySelector(s);
+      function toast(message) {
+        const el = $("#toast");
+        el.textContent = message;
+        el.style.display = "block";
+        clearTimeout(window.toastTimer);
+        window.toastTimer = setTimeout(() => (el.style.display = "none"), 2600);
+      }
+      function jobCard(j, i) {
+        return `<article class="job-card ${i === selected && layout === "2" ? "selected" : ""}" ${layout === "2" ? `onclick="selectJob(${i})"` : ""}><div class="job-top"><div class="logo">${j.initial}</div><div><h4>${j.title}</h4><p>${j.company} · ${j.place}</p></div></div><div class="tag-row">${j.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div><p class="job-desc">${j.desc}</p><div class="job-bottom"><strong>${j.salary}</strong><button class="secondary" onclick="event.stopPropagation();toast('Preview only — application flow is not connected')">View Job ↗</button></div></article>`;
+      }
+      function blogCard(b) {
+        return `<article class="blog-card"><div class="blog-art">${b.symbol}</div><div class="blog-content"><span class="eyebrow">${b.cat}</span><h4>${b.title}</h4><p>${b.desc}</p><div class="blog-meta"><span>${b.author}</span><span>${b.date}</span></div></div></article>`;
+      }
+      function search() {
+        return `<form class="searchbar" onsubmit="event.preventDefault();query=this.elements.keyword.value.trim().toLowerCase();render()"><input name="keyword" placeholder="Job title, skills or company" value="${query.replaceAll('"', "&quot;")}"><input placeholder="City or remote" aria-label="Location (visual prototype)"><button class="primary">Search Jobs</button></form>`;
+      }
+      function filtered() {
+        return jobs
+          .map((j, i) => ({ ...j, index: i }))
+          .filter((j) =>
+            (j.title + " " + j.company + " " + j.tags.join(" "))
+              .toLowerCase()
+              .includes(query),
+          );
+      }
+      function list(cards, cls = "stack") {
+        return `<div class="${cls}">${cards.length ? cards.map((j) => jobCard(j, j.index)).join("") : '<div class="panel" style="padding:25px">No jobs match that search. Try another keyword.</div>'}</div>`;
+      }
+      function filters() {
+        return `<aside class="panel filters"><h4>Filter opportunities</h4><strong class="small">Work arrangement</strong><label><input type="checkbox" onchange="toast('Filter behavior can be wired to Django')"> Remote</label><label><input type="checkbox" onchange="toast('Filter behavior can be wired to Django')"> Hybrid</label><label><input type="checkbox" onchange="toast('Filter behavior can be wired to Django')"> On-site</label><hr style="border:0;border-top:1px solid var(--color-border);margin:18px 0"><strong class="small">Job type</strong><label><input type="checkbox" onchange="toast('Filter behavior can be wired to Django')"> Full-time</label><label><input type="checkbox" onchange="toast('Filter behavior can be wired to Django')"> Contract</label><label><input type="checkbox" onchange="toast('Filter behavior can be wired to Django')"> Internship</label></aside>`;
+      }
+      function detail() {
+        const j = jobs[selected];
+        return `<aside class="panel detail"><span class="eyebrow">Featured opportunity</span><div class="job-top" style="margin-top:14px"><div class="logo">${j.initial}</div><div><h2>${j.title}</h2><p>${j.company} · ${j.place}</p></div></div><div class="tag-row" style="margin-top:15px">${j.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div><h3>${j.salary}</h3><button class="primary" onclick="toast('Demo only — application flow not connected')">Apply for this job</button><h3>About the role</h3><p>${j.desc}</p><h3>What you'll do</h3><ul><li>Collaborate with cross-functional teams on meaningful projects</li><li>Deliver high-quality work with modern tools</li><li>Contribute to continuous product improvement</li></ul><p class="small">Illustrative job description for design evaluation.</p></aside>`;
+      }
+      function jobsView() {
+        let f = filtered();
+        if (layout === "1")
+          return `<div class="hero"><span class="eyebrow">Find your next opportunity</span><h2>Work that moves you forward.</h2><p>Search curated opportunities from companies across Canada.</p>${search()}</div><div class="side-layout">${filters()}<section><div class="section-head"><h3>Latest opportunities</h3><span class="muted small">${f.length} jobs</span></div>${list(f)}</section></div>`;
+        if (layout === "2")
+          return `<div class="hero"><span class="eyebrow">Job Explorer</span><h2>Find a role. Explore the details.</h2><p>Browse opportunities and compare details without losing your place.</p>${search()}</div><div class="section-head"><h3>Explore jobs</h3><span class="muted small">Select any listing</span></div><div class="split-layout">${list(f, "split-list")}${detail()}</div>`;
+        if (layout === "3")
+          return `<div class="hero discovery-hero"><div><span class="eyebrow">Your career starts here</span><h2>Discover work that fits your future.</h2><p>Explore opportunities, build new skills and find guidance for your next move.</p>${search()}</div><div class="stat-grid"><div class="stat"><strong>6</strong><span>Sample openings</span></div><div class="stat"><strong>4</strong><span>Career articles</span></div><div class="stat"><strong>3</strong><span>Work styles</span></div><div class="stat"><strong>∞</strong><span>Possibilities</span></div></div></div><div class="section-head"><h3>Explore by career path</h3></div><div class="categories"><div class="category"><span>⌘</span>Software</div><div class="category"><span>▥</span>Data & AI</div><div class="category"><span>◈</span>Design</div><div class="category"><span>☁</span>Cloud</div></div><div class="section-head"><h3>Featured opportunities</h3><span class="muted small">${f.length} results</span></div>${list(f, "grid3")}<div class="section-head"><h3>Career insights</h3><button class="secondary" onclick="setPage('blogs')">Read articles →</button></div><div class="grid3">${blogs.slice(0, 3).map(blogCard).join("")}</div>`;
+        return `<div class="hero market-hero"><span class="eyebrow">JobZila marketplace</span><h2>Find your kind of work.</h2><p>Fresh opportunities, straightforward details, and a better way to explore what's next.</p>${search()}</div><div class="section-head"><h3>Explore open roles</h3><span class="muted small">${f.length} available</span></div>${list(f, "market-grid")}`;
+      }
+      function blogsView() {
+        if (layout === "1")
+          return `<div class="hero"><span class="eyebrow">JobZila Insights</span><h2>Career advice worth reading.</h2><p>Practical articles about interviews, job searches and professional growth.</p></div><div class="section-head"><h3>Latest articles</h3><span class="muted small">${blogs.length} articles</span></div><div class="blog-feature">${blogs.map(blogCard).join("")}</div>`;
+        if (layout === "2")
+          return `<div class="hero"><span class="eyebrow">Career resource library</span><h2>Learn something useful today.</h2><p>Focused guides designed to help you take your next career step.</p></div><div class="side-layout">${`<aside class="panel filters"><h4>Topics</h4><label>Career Advice</label><label>Interviews</label><label>Learning</label><label>Career Growth</label></aside>`}<div class="editorial-list">${blogs.map(blogCard).join("")}</div></div>`;
+        if (layout === "3")
+          return `<div class="hero discovery-hero"><div><span class="eyebrow">Career stories & guidance</span><h2>Grow your skills. Shape your future.</h2><p>Useful reading for people looking to move forward in their careers.</p></div><div class="stat-grid"><div class="stat"><strong>01</strong><span>Prepare</span></div><div class="stat"><strong>02</strong><span>Learn</span></div><div class="stat"><strong>03</strong><span>Apply</span></div><div class="stat"><strong>04</strong><span>Grow</span></div></div></div><div class="section-head"><h3>Editor's picks</h3></div><div class="blog-feature">${blogs.map(blogCard).join("")}</div>`;
+        return `<div class="hero market-hero"><span class="eyebrow">The JobZila Journal</span><h2>Ideas for your next move.</h2><p>Career tips, practical playbooks and insights from the world of work.</p></div><div class="section-head"><h3>Discover the latest</h3></div><div class="magazine-grid">${blogs.map(blogCard).join("")}</div>`;
+      }
+      const descriptions = {
+        1: "Professional · Filter sidebar, familiar job results and a featured editorial blog grid.",
+        2: "Split View · Select a job to inspect details side-by-side; blogs use a resource-library layout.",
+        3: "Career Discovery · Editorial landing experience with career categories, featured jobs and insights.",
+        4: "Startup Marketplace · Compact opportunity grid and a magazine-inspired blog experience.",
+      };
+      function render() {
+        document
+          .querySelectorAll("[data-layout]")
+          .forEach((b) =>
+            b.classList.toggle("active", b.dataset.layout === layout),
+          );
+        document
+          .querySelectorAll("[data-page]")
+          .forEach((b) =>
+            b.classList.toggle("active", b.dataset.page === page),
+          );
+        $("#description").textContent = descriptions[layout];
+        $("#preview").innerHTML = page === "jobs" ? jobsView() : blogsView();
+      }
+      function selectJob(i) {
+        selected = i;
+        render();
+      }
+      function setPage(p) {
+        page = p;
+        render();
+      }
+      document.querySelectorAll("[data-layout]").forEach((b) =>
+        b.addEventListener("click", () => {
+          layout = b.dataset.layout;
+          render();
+        }),
+      );
+      document
+        .querySelectorAll("[data-page]")
+        .forEach((b) =>
+          b.addEventListener("click", () => setPage(b.dataset.page)),
+        );
+      $("#theme").addEventListener(
+        "change",
+        (e) => (document.body.dataset.theme = e.target.value),
+      );
+      $("#viewport").addEventListener("change", (e) => {
+        $(".lab").style.maxWidth =
+          e.target.value === "narrow" ? "420px" : "1250px";
+        toast(
+          e.target.value === "narrow"
+            ? "Narrow preview enabled — resize browser for true mobile breakpoints"
+            : "Full width restored",
+        );
+      });
+      render();
+    </script>
+  </body>
+</html>
