@@ -1,3 +1,7 @@
+## Final JobZila Version 
+
+[Final Code](../django-jobzila-projects/09-jobzila-crud-blog/jobzilav3/)
+
 1. FIx the Blog CSS
 
 ```css
